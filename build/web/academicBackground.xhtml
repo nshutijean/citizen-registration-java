@@ -1,0 +1,148 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+       xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Academic Background</title>
+             <style>
+                 .container{
+                         max-width: 1058px;
+                 }        
+        .header {
+            color: #36A0FF;
+            font-size: 27px;
+            padding: 10px;
+        }
+
+        .bigicon {
+            font-size: 35px;
+            color: #36A0FF;
+        }
+        .form-group{
+            margin-bottom: -2rem;
+            width: 94%;
+            margin-left: 228px;
+            margin-top:-45px;
+        }
+        .col-md-12{
+            padding-top: 8px;
+
+            padding-right: 285px;
+        }
+        .btn btn-primary btn-lg{
+      
+        } 
+    </style>
+      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous"/>
+    </h:head>
+
+    <h:body>
+<!--        <h:form>
+            <h1>academic information</h1>
+            <hr></hr>
+            <h:panelGrid columns="4">
+                <h:outputLabel value="#"/>
+                <h:outputLabel value="Name of the school"/>
+                <h:outputLabel value="Year begun"/>
+                <h:outputLabel value="Year of Completion"/>
+                <h:outputLabel value="1"/>
+                <h:inputText value="${sc.student.ol.schoolName}"/>
+                <h:inputText value="${sc.student.ol.startYear}" a:placeholder="ex:12-12-2019">
+                </h:inputText>
+                <h:inputText value="${sc.student.ol.endYear}" a:placeholder="ex:12-12-2019">
+                </h:inputText>
+                <h:outputLabel value="2"/>
+                <h:inputText value="${sc.student.el.schoolName}"/>
+                <h:inputText value="${sc.student.el.startYear}" a:placeholder="ex:12-12-2019">
+                </h:inputText>
+                <h:inputText value="${sc.student.el.endYear}" a:placeholder="ex:12-12-2019">
+                </h:inputText>
+            </h:panelGrid>  
+
+            <h:panelGrid columns="4">
+                <h:outputLabel id="te"/>
+                <h:commandButton value="Back" action="personalInformation"/>
+                <h:outputLabel id="me"/>
+                <h:commandButton value="next" action="majorInformation"/>
+            </h:panelGrid>
+        </h:form>-->
+  
+    <body style="background-color: #212529;"><!--
+        --> 
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="well well-sm">
+                        <h:form class="form-horizontal,justify-content-center" style="width: 79%;">
+                            <fieldset>
+                                <legend class="text-center header"><span>Academic Background</span></legend>
+
+                                <div class="form-group">
+                                    <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-user bigicon"></i></span>
+                                    <div class="col-md-8">
+                                        <h:inputText value="${sc.student.ol.schoolName}" class="form-control form-control-sm" a:placeholder="O' Level school name"/>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-user bigicon"></i></span>
+                                    <div class="col-md-8">
+                                        <h:inputText value="${sc.student.ol.startYear}" pt:placeholder="Enter Search Value" class="form-control form-control-sm" />
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-envelope-o bigicon"></i></span>
+                                    <div class="col-md-8">
+                                        <h:inputText value="${sc.student.ol.endYear}" a:placeholder="ex:12-12-2019" class="form-control form-control-sm"/>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-phone-square bigicon"></i></span>
+                                    <div class="col-md-8">
+                                       <h:inputText value="${sc.student.el.schoolName}" class="form-control form-control-sm" a:placeholder="A' Level school name"/>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-phone-square bigicon"></i></span>
+                                    <div class="col-md-8">
+                                        <h:inputText value="${sc.student.el.startYear}" pt:placeholder="Enter Search Value" class="form-control form-control-sm" />
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-envelope-o bigicon"></i></span>
+                                    <div class="col-md-8">
+                                        <h:inputText value="${sc.student.el.endYear}" pt:placeholder="Enter Search Value" class="form-control form-control-sm" />
+                                    </div>
+                                </div>  
+                                 <div class="form-group">
+                                    <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-envelope-o bigicon"></i></span>
+                                    <div class="col-md-8">
+                                        <h:inputText value="${sc.student.el.major}" pt:placeholder="Enter Combination" class="form-control form-control-sm" />
+                                    </div>
+                                </div> 
+                                <div class="form-group">
+                                    <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-envelope-o bigicon"></i></span>
+                                    <div class="col-md-8">
+                                        <h:inputText value="${sc.student.el.marks}" pt:placeholder="Enter the marks %" class="form-control form-control-sm" maxlength="3" />
+                                    </div>
+                                </div> 
+                            </fieldset>
+                           <h:commandButton value="Back" action="personalInformation" class="btn btn-primary btn-lg" style=" margin-left:240px;"  />
+                            <h:commandButton action="majorInformation" value="next" class="btn btn-primary btn-lg" style=" margin-left: 370px;"/>
+                                   
+                        </h:form>
+                    </div>
+                </div>
+            </div>
+        </div><!--
+        --> 
+
+    </body>      
+    </h:body>
+</html>
+

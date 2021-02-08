@@ -1,0 +1,35 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <h:form>
+            <h:panelGrid columns="2">
+                <h:outputLabel value="province Id"/>
+                <h:inputText value="#{provControl.province.id}"/>
+                <h:outputLabel value="province name"/>
+                <h:inputText value="#{provControl.province.name}"/>
+                
+            </h:panelGrid>
+            <h:commandButton value="save province" action="#{provControl.saveProvince()}"/>
+        </h:form>
+        <h:form>
+            <h:panelGrid columns="2">
+                <h:outputLabel value="District Id"/>
+                <h:inputText value="#{disControl.district.id}"/>
+                <h:outputLabel value="District name"/>
+                <h:inputText value="#{disControl.district.name}"/>
+                <h:outputLabel value="Provinces"/>
+                <h:selectOneMenu value="#{disControl.district.province.id}">
+                    <f:selectItems value="#{disControl.provList}"  var="temp" itemLabel="#{temp.name}" itemValue="#{temp.id}"/>
+                </h:selectOneMenu>
+            </h:panelGrid>
+            <h:commandButton value="save province" action="#{disControl.saveDistrict()}"/>
+        </h:form>
+    </h:body>
+</html>
+

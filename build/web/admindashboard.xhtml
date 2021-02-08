@@ -1,0 +1,227 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Admin dashboard</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous"/>
+        <h:outputStylesheet library="css" name="bootstrap.min.css"/>
+        <h:outputStylesheet library="css" name="now-ui-dashboard.css"/>
+        <style>
+            a:hover{
+                background-color: green;
+            }
+        </style>
+        <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+        <script type="text/javascript">
+            google.charts.load('current', {'packages': ['corechart']});
+            google.charts.setOnLoadCallback(drawChart);
+            google.charts.setOnLoadCallback(drawChart1);
+
+            function drawChart() {
+
+                var data = google.visualization.arrayToDataTable([
+                    ['Applicants', 'Applicants number'],
+                    ['rejected ', #{sc.rejectedNumber}],
+                    ['Approved ', #{sc.approvedNumber}]
+                ]);
+
+                var options = {
+                    title: 'Applicant Statistics',
+                    is3D: true,
+                };
+
+                var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+
+                chart.draw(data, options);
+            }
+             function drawChart1() {
+
+                var data = google.visualization.arrayToDataTable([
+                    ['Applicants', 'Applicants number'],
+                    ['Female', #{sc.femaleApplicant}],
+                    ['Male', #{sc.maleApplicant}]
+                ]);
+
+                var options = {
+                    title: 'Applicant Statistics',
+                    is3D: true,
+                };
+
+                var chart = new google.visualization.PieChart(document.getElementById('piechart1'));
+
+                chart.draw(data, options);
+            }
+        </script>
+        <style>
+
+        </style>
+    </h:head>
+    <h:body>
+        <div class="wrapper ">
+            <div class="sidebar" data-color="orange">
+
+                <div class="logo">
+
+                    <a href="http://www.creative-tim.com" class="simple-text logo-normal">
+                        Student Registration
+                    </a>
+                </div>
+                <div class="sidebar-wrapper" id="sidebar-wrapper">
+                    <ul class="nav">
+                        <li class="active ">
+                            <a href="admindashboard.xhtml">
+
+                                <p>Dashboard</p>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="adminMenu2.xhtml">
+
+                                <p>New Applicant</p>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="adminMenu1.xhtml">
+
+                                <p>Approved Applicant</p>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="adminMenu3.xhtml">
+
+                                <p>Rejected Applicant</p>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="provinceReg.xhtml">
+
+                                <p>Add Address</p>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="main-panel" id="main-panel">
+                <!-- Navbar -->
+                <nav class="navbar navbar-expand-lg navbar-transparent  bg-primary  navbar-absolute">
+                    <div class="container-fluid">
+                        <div class="navbar-wrapper">
+                            <div class="navbar-toggle">
+                                <button type="button" class="navbar-toggler">
+                                    <span class="navbar-toggler-bar bar1"></span>
+                                    <span class="navbar-toggler-bar bar2"></span>
+                                    <span class="navbar-toggler-bar bar3"></span>
+                                </button>
+                            </div>
+                            <a class="navbar-brand" href="admindashboard.xhtml">Dashboard</a>
+                        </div>
+                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-bar navbar-kebab"></span>
+                            <span class="navbar-toggler-bar navbar-kebab"></span>
+                            <span class="navbar-toggler-bar navbar-kebab"></span>
+                        </button>
+                        <div class="collapse navbar-collapse justify-content-end" id="navigation">
+
+                            <ul class="navbar-nav">
+                                <li class="nav-item">
+                                    <h:form class="form-inline my-2 my-lg-0">
+                                        <h:commandButton class="btn btn-outline-success my-2 my-sm-0" type="submit" action="#{userController.logout()}" value="Logout"/>
+                                    </h:form>
+                                </li>
+
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+                <!-- End Navbar -->
+                <div class="panel-header panel-header-lg">
+                    <canvas id="bigDashboardChart"></canvas>
+                </div>
+                <div class="content" style="margin-top:-224px;">
+                    <div class="row">
+                        <div class="col-lg-4">
+                            <div class="card card-chart">
+                                <div class="card-header">
+                                    <h5 class="card-category">Approval Statistics</h5>
+                                    <h4 class="card-title" style="color: blue">Applicant Info</h4>
+                                </div>
+                                <div class="card-body">
+                                    <div class="chart-area">
+                                        <div id="piechart" style="width: 300px; height: 200px;"></div>
+                                    </div>
+                                </div>
+                                <div class="card-footer">
+                                    <div class="stats">
+                                        <i class="now-ui-icons arrows-1_refresh-69"></i> Just Updated
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6">
+                            <div class="card card-chart">
+                                <div class="card-header">
+                                    <h5 class="card-category">Gender Status</h5>
+                                    <h4 class="card-title">Applicant Gender</h4>
+                                </div>
+                                <div class="card-body">
+                                    <div class="chart-area">
+                                        <div id="piechart1" style="width: 300px; height: 200px;"></div>
+                                    </div>
+                                </div>
+                                <div class="card-footer">
+                                    <div class="stats">
+                                        <i class="now-ui-icons arrows-1_refresh-69"></i> Just Updated
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6">
+                            <div class="card card-chart">
+
+                                <div class="row">
+                                    <div>
+                                        <div class="card-header">
+                                            <h5 class="card-category">User</h5>
+                                            <h4 class="card-title">New Application</h4>
+                                        </div>
+                                        <div class="card-body">
+                                            <div class="chart-area">
+                                                <a href="adminMenu2.xhtml" style="text-decoration: none">
+                                                    <p style="text-align: center;font-size: -webkit-xxx-large;">#{sc.newApplicantNumber}</p>
+                                                </a>
+                                                
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div >
+                                        <div class="card-header">
+                                            <h5 class="card-category">User</h5>
+                                            <h4 class="card-title">Online Users</h4>
+                                        </div>
+                                        <div class="card-body">
+                                            <div class="chart-area">
+                                                <p style="text-align: center;font-size: -webkit-xxx-large;">#{sc.onlineUsersi}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+
+                                <div class="card-footer">
+                                    <div class="stats">
+                                        <i class="now-ui-icons ui-2_time-alarm"></i> Last 7 days
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </h:body>
+</html>
